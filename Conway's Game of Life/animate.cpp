@@ -14,7 +14,7 @@ animate::animate(sf::RenderWindow* window)
 			old_scene[x][y].setRadius(5);
 			old_scene[x][y].setFillColor(gol::deadcolor);
 			old_scene[x][y].setOrigin(5, 5);
-			old_scene[x][y].setPosition(gol::old_scene[x][y].x * old_scene[x][y].getRadius()*1.5, gol::old_scene[x][y].y * old_scene[x][y].getRadius() * 1.5); //It's a long shot jim, lets see if it pays off.
+			old_scene[x][y].setPosition(gol::old_scene[x][y].x * old_scene[x][y].getRadius()*2, gol::old_scene[x][y].y * old_scene[x][y].getRadius() * 2); //It's a long shot jim, lets see if it pays off.
 		}
 		new_scene[x] = new sf::CircleShape[gol::sizeOfFieldY];
 		for (size_t y = 0; y < gol::sizeOfFieldY; y++)
@@ -23,7 +23,8 @@ animate::animate(sf::RenderWindow* window)
 			new_scene[x][y].setRadius(5);
 			new_scene[x][y].setFillColor(gol::deadcolor);
 			new_scene[x][y].setOrigin(5, 5);
-			new_scene[x][y].setPosition(gol::new_scene[x][y].x *  old_scene[x][y].getRadius() *1.5, gol::new_scene[x][y].y *  old_scene[x][y].getRadius() * 1.5); //It's a long shot jim, lets see if it pays off.
+			new_scene[x][y].setScale(3, 3);
+			new_scene[x][y].setPosition(gol::new_scene[x][y].x * new_scene[x][y].getScale().x* new_scene[x][y].getRadius() * 2, gol::new_scene[x][y].y *new_scene[x][y].getScale().x* new_scene[x][y].getRadius() * 2); //It's a long shot jim, lets see if it pays off.
 		}
 	}
 }

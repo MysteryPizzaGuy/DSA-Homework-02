@@ -4,7 +4,7 @@
 int main() {
 	sf::RenderWindow window(sf::VideoMode(640, 480), "Conway's Game of Life");
 	sf::Clock clock;
-	gol game(640/10, 20, 20, 20);
+	gol game(20, 20, 20, 20);
 	animate anim(&window);
 	while (window.isOpen())
 	{

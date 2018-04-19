@@ -23,6 +23,7 @@ animate::animate(sf::RenderWindow* window)
 			new_scene[x][y].setRadius(5);
 			new_scene[x][y].setFillColor(gol::deadcolor);
 			new_scene[x][y].setOrigin(5, 5);
+			//Hex grid, every other row is half a step below the other one
 			new_scene[x][y].setScale(3, 3);
 			new_scene[x][y].setPosition(gol::new_scene[x][y].x * new_scene[x][y].getScale().x* new_scene[x][y].getRadius() * 2, gol::new_scene[x][y].y *new_scene[x][y].getScale().x* new_scene[x][y].getRadius() * 2); //It's a long shot jim, lets see if it pays off.
 		}

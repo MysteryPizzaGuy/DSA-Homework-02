@@ -1,5 +1,15 @@
 #include "gol.h"
 
+sf::Color gol::deadcolor(124, 123, 123);
+sf::Color gol::freshcolor(111, 111, 111);
+gol::cell** gol::old_scene = nullptr;
+gol::cell** gol::new_scene = nullptr;
+unsigned gol::sizeOfFieldX = 0;
+unsigned gol::sizeOfFieldY = 0;
+unsigned gol::sizeOfViewX = 0;
+unsigned gol::sizeOfViewY = 0;
+
+
 
 
 gol::gol(unsigned sizeOfFieldX,unsigned sizeOfFieldY, unsigned sizeOfViewX, unsigned sizeOfViewY)
@@ -8,20 +18,18 @@ gol::gol(unsigned sizeOfFieldX,unsigned sizeOfFieldY, unsigned sizeOfViewX, unsi
 	new_scene = new cell*[sizeOfFieldX];
 	for (unsigned x = 0; x < sizeOfFieldX; x++)
 	{
-		cell* temp = new cell[sizeOfFieldY];
+		old_scene[x] = new cell[sizeOfFieldY];
 		for (size_t y = 0; y < sizeOfFieldY; y++)
 		{
-			temp[y].x = x;
-			temp[y].y = y;
+			old_scene[x][y].x = x;
+			old_scene[x][y].y = y;
 		}
-		old_scene[x] = temp;
-		cell* temp = new cell[sizeOfFieldY];
+		new_scene[x] = new cell[sizeOfFieldY];
 		for (size_t y = 0; y < sizeOfFieldY; y++)
 		{
-			temp[y].x = x;
-			temp[y].y = y;
+			new_scene[x][y].x = x;
+			new_scene[x][y].y = y;
 		}
-		new_scene[x] = temp;
 	}
 	this->sizeOfFieldX = sizeOfFieldX;
 	this->sizeOfFieldY = sizeOfFieldY;
@@ -53,7 +61,7 @@ void gol::cell::update_cell()
 		else {
 			alive = false;
 			age = 0;
-			color = gol::freshcolor;
+			color = gol::deadcolor;
 			return;
 		}
 	}
@@ -61,6 +69,8 @@ void gol::cell::update_cell()
 		if (neighbours==3)
 		{
 			alive = true;
+			color = gol::freshcolor;
+			// age is already set to zero by either the dead if branch or the initialization of the cell
 			return;
 		}
 	}
@@ -69,7 +79,7 @@ void gol::cell::update_cell()
 unsigned gol::cell::how_many_alive_around_me() const
 {
 	//TODO: Set condition for borders, naimely for when x or y go into negative or overflow
-	unsigned howmany;
+	unsigned howmany =0;
 	if (gol::old_scene[x-1][y-1].alive)
 	{
 		howmany++;

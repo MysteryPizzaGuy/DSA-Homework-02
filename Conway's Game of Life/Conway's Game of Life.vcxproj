@@ -147,7 +147,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Conway%27s Game of Life\animate.cpp" />
+    <ClCompile Include="..\Conway%27s Game of Life\gol.cpp" />
     <ClCompile Include="..\Conway%27s Game of Life\Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Conway%27s Game of Life\animate.h" />
+    <ClInclude Include="..\Conway%27s Game of Life\gol.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

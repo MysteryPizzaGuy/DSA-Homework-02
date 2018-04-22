@@ -91,7 +91,14 @@ void gol::cell::update_cell()
 unsigned gol::cell::how_many_alive_around_me() const
 {
 	//TODO: Set condition for borders, naimely for when x or y go into negative or overflow
-	unsigned howmany =0;
+	unsigned howmany = 0;
+	if (x <= 0 || y <= 0)
+	{
+		return howmany;
+	}
+	if (x >= sizeOfFieldX - 1|| y >= sizeOfFieldY - 1) {
+		return howmany;
+	}
 	if (gol::old_scene[x-1][y-1].alive)
 	{
 		howmany++;

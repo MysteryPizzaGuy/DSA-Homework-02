@@ -20,6 +20,8 @@ private:
 		unsigned how_many_alive_around_me() const; //Used to get number of live neighbours
 	};
 public:
+	void update_all_cells();
+public:
 	static unsigned sizeOfFieldX; // Field is the actual size
 	static unsigned sizeOfFieldY;
 	static unsigned sizeOfViewX; //View is what can be seen by the user

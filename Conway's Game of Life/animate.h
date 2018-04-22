@@ -8,7 +8,7 @@ public:
 	void draw_all_shapes();
 private:
 	sf::RenderWindow* window;
-	sf::CircleShape** old_scene;
-	sf::CircleShape** new_scene;
+	sf::RectangleShape** old_scene;
+	sf::RectangleShape** new_scene;
 };
 

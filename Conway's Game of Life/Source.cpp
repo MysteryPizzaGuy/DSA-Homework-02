@@ -13,7 +13,7 @@ int main() {
 		//Elapsed time get
 
 		//Update
-
+		game.update_all_cells();
 		//Render
 		window.clear(sf::Color::Black);
 		anim.draw_all_shapes();

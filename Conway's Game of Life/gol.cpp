@@ -49,6 +49,18 @@ gol::~gol()
 	delete[] new_scene;
 }
 
+void gol::update_all_cells()
+{
+	for (size_t x = 0; x < sizeOfFieldX; x++)
+	{
+		for (size_t y = 0; y < sizeOfFieldY; y++)
+		{
+			new_scene[x][y].update_cell();
+		}
+		std::memcpy(old_scene[x], new_scene[x], sizeOfFieldX * sizeof *new_scene);
+	}
+}
+
 void gol::cell::update_cell()
 {
 	unsigned neighbours = how_many_alive_around_me();

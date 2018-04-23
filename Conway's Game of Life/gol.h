@@ -12,7 +12,7 @@ private:
 		void update_cell(); //This does everything for the cell boi
 	public:
 		bool alive = false;
-		unsigned age = 0; // To use to play with colour
+		int age = 0; // To use to play with colour
 		unsigned x; // pos x
 		unsigned y; // pos y
 		sf::Color color; //Current color of the cell
@@ -21,6 +21,7 @@ private:
 	};
 public:
 	void update_all_cells();
+	void random_seed_start(double bernoullitypeprob);
 public:
 	static unsigned sizeOfFieldX; // Field is the actual size
 	static unsigned sizeOfFieldY;

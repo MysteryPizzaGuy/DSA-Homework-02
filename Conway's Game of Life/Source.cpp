@@ -26,10 +26,10 @@ int main() {
 	
 		game.update_all_cells();
 		//Render
-		window.clear(sf::Color::Black);
+		window.clear(game.deadcolor);
 		anim.draw_all_shapes();
 		window.display();
-		sf::sleep(sf::Time(sf::seconds(0.01)));
+		sf::sleep(sf::Time(sf::seconds(0.02)));
 		std::cout << "Generation: " << generation << std::endl;
 		generation++;
 	}

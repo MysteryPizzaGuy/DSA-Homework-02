@@ -1,8 +1,8 @@
 #include "gol.h"
 #include <random>
 #include <iostream>
-sf::Color gol::deadcolor(0,0, 0);
-sf::Color gol::freshcolor(75, 0, 130);
+sf::Color gol::deadcolor(0, 0, 0);
+sf::Color gol::freshcolor(255, 0, 0);
 gol::cell** gol::old_scene = nullptr;
 gol::cell** gol::new_scene = nullptr;
 unsigned gol::sizeOfFieldX = 0;
@@ -91,6 +91,34 @@ void gol::random_seed_start(double bernoullitypeprob)
 	}
 }
 
+sf::Color gol::approach_color(sf::Color approacher, sf::Color approchee, float step)
+{
+	if (approacher.r>approchee.r)
+	{
+		approacher.r = static_cast<sf::Uint8>(approacher.r*step);
+	}
+	else if (approacher.r<approchee.r){
+		approacher.r = static_cast<sf::Uint8>((255-approacher.r)*step);
+	}
+	if (approacher.b>approchee.b)
+	{
+		approacher.b = static_cast<sf::Uint8>(approacher.b*step);
+	}
+	else if (approacher.b<approchee.b)
+	{
+		approacher.b = static_cast<sf::Uint8>((255 - approacher.b)*step);
+	}
+	if (approacher.g>approchee.g)
+	{
+		approacher.g = static_cast<sf::Uint8>(approacher.g*step);
+	}
+	else if (approacher.g<approchee.g)
+	{
+		approacher.g = static_cast<sf::Uint8>((255 - approacher.g)*step);
+	}
+	return approacher;
+}
+
 void gol::cell::update_cell()
 {
 	unsigned neighbours = how_many_alive_around_me();
@@ -110,10 +138,11 @@ void gol::cell::update_cell()
 			alive = false;
 			age = 0;
 			//color = gol::deadcolor;
-			color.r += (color.r) * 1 / 8;
-			color.b += (color.b) * 1 / 8;
-			color.g += (color.g) * 1 / 8;
-			color.a -= 40;
+			//color.r += (color.r) * 1 / 16;
+			//color.b += (color.b) * 1 / 16;
+			//color.g += (color.g) * 1 / 16;
+			color =  gol::approach_color(color, gol::deadcolor, 6 /8.0);
+			//color.a -= 40;
 			return;
 		}
 	}
@@ -127,12 +156,13 @@ void gol::cell::update_cell()
 		}
 		else if (color!=gol::deadcolor)
 		{
-			if (age>-4)
+			if (age>-15)
 			{
-				color.r += (color.r) * 1 / 8;
-				color.b += (color.b) * 1 / 8;
-				color.g += (color.g) * 1 / 8;
-				color.a -= 40;
+				//color.r += (color.r) * 1 / 16;
+				////color.b += (color.b) * 1 / 16;
+				////color.g += (color.g) * 1 / 16;
+				color = gol::approach_color(color, gol::deadcolor, 6 / 8.0);
+				//color.a -= 40;
 				age--;
 			}
 			else

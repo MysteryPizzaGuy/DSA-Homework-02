@@ -22,6 +22,8 @@ private:
 public:
 	void update_all_cells();
 	void random_seed_start(double bernoullitypeprob);
+private:
+	static sf::Color approach_color(sf::Color approacher,sf::Color approchee, float step);
 public:
 	static unsigned sizeOfFieldX; // Field is the actual size
 	static unsigned sizeOfFieldY;
@@ -32,6 +34,7 @@ public:
 	static sf::Color deadcolor; //the color dead cells have aka. the background
 	static cell** old_scene;
 	static cell** new_scene;
+
 
 };
 

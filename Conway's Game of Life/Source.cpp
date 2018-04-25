@@ -29,7 +29,7 @@ int main() {
 		window.clear(game.deadcolor);
 		anim.draw_all_shapes();
 		window.display();
-		sf::sleep(sf::Time(sf::seconds(0.02)));
+		sf::sleep(sf::Time(sf::seconds(0.01)));
 		std::cout << "Generation: " << generation << std::endl;
 		generation++;
 	}

@@ -28,29 +28,17 @@ int main() {
 		}
 		if (clock.getElapsedTime()>=oneinstancetime)
 		{
-
-		//Elapsed time get
-
-		//Update
-		//for (size_t x = 0; x < 20; x++)
-		//{
-		//	for (size_t y = 0; y < 20; y++)
-		//	{
-		//		std::cout << game.old_scene[x][y].x << " " << game.old_scene[x][y].y << std::endl;
-		//	}
-		//}
-	
-		game.update_all_cells();
-		ss << "Generation >> " << generation;
-		counter.setString(ss.str());
-		ss.str("");
-		generation++;
-		//Render
-		window.clear(game.deadcolor);
-		anim.draw_all_shapes();
-		window.draw(counter);
-		window.display();
-		clock.restart();
+			game.update_all_cells();
+			ss << "Generation >> " << generation;
+			counter.setString(ss.str());
+			ss.str("");
+			generation++;
+			//Render
+			window.clear(game.deadcolor);
+			anim.draw_all_shapes();
+			window.draw(counter);
+			window.display();
+			clock.restart();
 		}
 	}
 

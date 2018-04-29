@@ -27,7 +27,7 @@ private:
 public:
 	static unsigned sizeOfFieldX; // Field is the actual size
 	static unsigned sizeOfFieldY;
-	static unsigned sizeOfViewX; //View is what can be seen by the user
+	static unsigned sizeOfViewX; //View is what can be seen by the user, currently unused
 	static unsigned sizeOfViewY;
 public:
 	static sf::Color freshcolor; //To set; The color young cells have

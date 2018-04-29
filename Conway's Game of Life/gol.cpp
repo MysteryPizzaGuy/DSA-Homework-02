@@ -125,24 +125,14 @@ void gol::cell::update_cell()
 	if (alive) {
 		if (neighbours==2 ||neighbours==3)
 		{
-	/*		if (age <30)
-			{
-				color.r += (255 - color.r) * 1 / 32;
-				color.b += (255 - color.b) * 1 / 32;
-				color.g += (255 - color.g) * 1 / 32;
-			}*/
 			age++;
 			return;
 		}
 		else {
 			alive = false;
 			age = 0;
-			//color = gol::deadcolor;
-			//color.r += (color.r) * 1 / 16;
-			//color.b += (color.b) * 1 / 16;
-			//color.g += (color.g) * 1 / 16;
+	
 			color =  gol::approach_color(color, gol::deadcolor, 6 /8.0);
-			//color.a -= 40;
 			return;
 		}
 	}
@@ -154,15 +144,11 @@ void gol::cell::update_cell()
 			// age is already set to zero by either the dead if branch or the initialization of the cell
 			return;
 		}
-		else if (color!=gol::deadcolor)
+		else if (color!=gol::deadcolor)//This is the bit that controls the color fade
 		{
 			if (age>-15)
 			{
-				//color.r += (color.r) * 1 / 16;
-				////color.b += (color.b) * 1 / 16;
-				////color.g += (color.g) * 1 / 16;
 				color = gol::approach_color(color, gol::deadcolor, 6 / 8.0);
-				//color.a -= 40;
 				age--;
 			}
 			else
@@ -176,7 +162,6 @@ void gol::cell::update_cell()
 
 unsigned gol::cell::how_many_alive_around_me() const
 {
-	//TODO: Set condition for borders, naimely for when x or y go into negative or overflow
 	unsigned howmany = 0;
 	if (x <= 0 || y <= 0)
 	{
